@@ -1,4 +1,11 @@
+// main.dart
 import 'package:flutter/material.dart';
+
+// Uncomment these to implement API functionalty:
+// import 'package:activity_gen/api/api_service.dart';
+// import 'package:activity_gen/api/models/activity.dart';
+// import 'package:activity_gen/api/endpoints.dart';
+
 
 void main() {
   runApp(const MyApp());
