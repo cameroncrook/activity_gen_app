@@ -1,4 +1,5 @@
 // main.dart
+import 'package:activity_gen/screens/generator_screen.dart';
 import 'package:flutter/material.dart';
 
 // Uncomment these to implement API functionalty:
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Home'),
+      home: GeneratorScreen(),
     );
   }
 }

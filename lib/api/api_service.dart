@@ -1,6 +1,7 @@
 // lib/api/api_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'models/activity.dart';
 /**
  * I havent set up the system for accepting multi-variable endpoints, but this makes a basic call with no parameters, so its any activty/price/participats etc
  * I didn't implement it into main, because I am not smart, but I tested it in the screens/test_screens.dart and it is returning the data properly
@@ -30,5 +31,21 @@ class ApiService {
       print('Error during API request: $error');
       throw Exception('Failed to fetch data');
     }
+  }
+}
+
+Future<Activity> getActivity() async {
+  final response = await http.get(Uri.parse('https://www.boredapi.com/api/activity'));
+
+  if (response.statusCode == 200) {
+    var decodedResponse = jsonDecode(response.body);
+
+    if (decodedResponse  is Map<String, dynamic>) {
+      return Activity.fromJson(decodedResponse);
+    } else {
+      throw Exception('Data is not the correct format');
+    }
+  } else {
+    throw Exception('Failed to load data');
   }
 }
