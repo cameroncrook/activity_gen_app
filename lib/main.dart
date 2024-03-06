@@ -1,6 +1,8 @@
 // main.dart
 import 'package:flutter/material.dart';
 
+import 'package:activity_gen/screens/login screen.dart';
+
 // Uncomment these to implement API functionalty:
 // import 'package:activity_gen/api/api_service.dart';
 // import 'package:activity_gen/api/models/activity.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Home'),
+      home: LoginScreen(),
     );
   }
 }
