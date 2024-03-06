@@ -2,13 +2,23 @@
 import 'package:activity_gen/screens/generator_screen.dart';
 import 'package:flutter/material.dart';
 
+// firestore
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+// screens
+import 'package:activity_gen/screens/login_screen.dart';
+
 // Uncomment these to implement API functionalty:
 // import 'package:activity_gen/api/api_service.dart';
 // import 'package:activity_gen/api/models/activity.dart';
 // import 'package:activity_gen/api/endpoints.dart';
 
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -52,7 +62,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 MaterialPageRoute(builder: (context) => GeneratorScreen()),
               );
             },
-            icon: const Icon(Icons.flash_on))
+            icon: const Icon(Icons.flash_on)
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+            }, 
+            icon: const Icon(Icons.person))
         ],
       ),
       body: Center(
