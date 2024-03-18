@@ -1,43 +1,47 @@
+// This is the code for the login screen. It contains two text fields for the username and password, and a button to submit the form. The login method is called when the button is pressed, and it prints the username and password to the console.
+
 import 'package:flutter/material.dart';
-import 'package:activity_gen/api/db.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String userId = "";
-  final DB db = DB();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  void authenticateUser() async {
-    String username = "bigdaddy501";
-    String password = "hashedPassword";
-
-    String id = await db.authenticate(username, password);
-    setState(() {
-      userId = id;
-    });
+  void _login() {
+    // Implement your login logic here
+    print('Username: ${_usernameController.text}, Password: ${_passwordController.text}');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
+        title: const Text('Login'),
       ),
-      body: Column(
-        children: <Widget>[
-          userId.isNotEmpty ? Text('User ID: $userId') : SizedBox.shrink(),
-          ElevatedButton(
-              onPressed: () {
-                authenticateUser(); // Initiate authentication
-              },
-              child: Text('Login'),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            TextField(
+              controller: _usernameController,
+              decoration: const InputDecoration(labelText: 'Username'),
             ),
-        ],
+            TextField(
+              controller: _passwordController,
+              decoration: const InputDecoration(labelText: 'Password'),
+              obscureText: true,
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: _login,
+              child: const Text('Login'),
+            ),
+          ],
+        ),
       ),
     );
   }

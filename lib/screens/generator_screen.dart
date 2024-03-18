@@ -34,7 +34,7 @@ class _GeneratorScreenState extends State<GeneratorScreen> {
             child: ElevatedButton.icon(
               onPressed: addActivity, 
               icon: const Icon(Icons.autorenew), 
-              label: const Text('Generate Activity')
+              label: const Text('Generate Activity'),
             ),
           ),
           // FutureBuilder(
