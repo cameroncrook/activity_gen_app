@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "984650402792",
+    "project_id": "activity-gen",
+    "storage_bucket": "activity-gen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984650402792:android:5fa6895c0523b2bd71325d",
+        "android_client_info": {
+          "package_name": "com.example.activity_gen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS8ZLwz0x13aQdsZsfqQYOZGf7YSBndBs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

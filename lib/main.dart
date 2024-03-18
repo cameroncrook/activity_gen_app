@@ -1,7 +1,13 @@
 // main.dart
+import 'package:activity_gen/screens/generator_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:activity_gen/screens/login screen.dart';
+// firestore
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+// screens
+import 'package:activity_gen/screens/login_screen.dart';
 
 // Uncomment these to implement API functionalty:
 // import 'package:activity_gen/api/api_service.dart';
@@ -9,7 +15,10 @@ import 'package:activity_gen/screens/login screen.dart';
 // import 'package:activity_gen/api/endpoints.dart';
 
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -25,15 +34,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -46,7 +53,23 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text("ActiFinder"),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GeneratorScreen()),
+              );
+            },
+            icon: const Icon(Icons.flash_on)
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+            }, 
+            icon: const Icon(Icons.person))
+        ],
       ),
       body: Center(
         child: Column(
