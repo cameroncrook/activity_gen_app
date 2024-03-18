@@ -1,19 +1,28 @@
-# activity_gen
+# Activity Generator App
 
-A new Flutter project.
+The Activity Generator app takes user inputs and calls an API to sow activites relating to those inputs.
 
-## Getting Started
+[Software Demo Video](http://youtube.link.goes.here)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Development Environment
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+For this project, development was done in VS Code using the Flutter extension.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Useful Websites
+
+* [Flutter Online Documentation](https://docs.flutter.dev/)
+* [Flutter: Getting Started](https://docs.flutter.dev/get-started/install)
+* [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+* [Board API](https://www.boredapi.com/)
+
 
 ## Tasks
-view the trello board [here](https://trello.com/b/3XuEI3PO/task-board).
+View the Trello task board [here](https://trello.com/b/3XuEI3PO/task-board).
+
+
+## Future Work
+
+* 🤷‍♂️
