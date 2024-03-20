@@ -1,6 +1,9 @@
 // This is the code for the login screen. It contains two text fields for the username and password, and a button to submit the form. The login method is called when the button is pressed, and it prints the username and password to the console.
 
 import 'package:flutter/material.dart';
+import 'package:activity_gen/api/db.dart';
+import 'package:activity_gen/screens/signup_screen.dart';
+import 'package:activity_gen/main.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,10 +13,16 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final db = DB();
 
-  void _login() {
-    // Implement your login logic here
-    print('Username: ${_usernameController.text}, Password: ${_passwordController.text}');
+  void _login() async {
+    String user_id = await db.authenticate(_usernameController.text, _passwordController.text);
+
+    if (user_id != '') {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+    } else {
+      print("something went wrong");
+    }
   }
 
   @override
@@ -36,9 +45,19 @@ class _LoginScreenState extends State<LoginScreen> {
               obscureText: true,
             ),
             const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: _login,
-              child: const Text('Login'),
+            Row(
+              children: [
+                ElevatedButton(
+                  onPressed: _login,
+                  child: const Text('Login'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen()));
+                  }, 
+                  child: const Text('No account? Sign up')
+                ),
+              ],
             ),
           ],
         ),

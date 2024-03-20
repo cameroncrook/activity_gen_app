@@ -3,12 +3,13 @@ import 'package:activity_gen/screens/generator_screen.dart';
 import 'package:flutter/material.dart';
 
 // firestore
-// import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 // screens
 import 'package:activity_gen/screens/login_screen.dart';
 import 'package:activity_gen/screens/activity_type.dart';
+
 
 // Uncomment these to implement API functionalty:
 // import 'package:activity_gen/api/api_service.dart';
@@ -17,9 +18,9 @@ import 'package:activity_gen/screens/activity_type.dart';
 
 
 void main() async {
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: LoginScreen(),
     );
   }
 }
@@ -67,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginTest()));
             }, 
             icon: const Icon(Icons.person)),
           IconButton(
