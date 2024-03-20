@@ -1,6 +1,6 @@
 # Activity Generator App
 
-The Activity Generator app takes user inputs and calls an API to sow activites relating to those inputs.
+The Activity Generator app takes user inputs and calls an API to show activites relating to those inputs.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
