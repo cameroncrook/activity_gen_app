@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(ActivityTypeScreen());
-}
-
 class ActivityTypeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
