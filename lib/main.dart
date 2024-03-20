@@ -8,7 +8,8 @@ import 'firebase_options.dart';
 
 // screens
 import 'package:activity_gen/screens/login_screen.dart';
-import 'package:activity_gen/screens/login_screen_test.dart';
+import 'package:activity_gen/screens/activity_type.dart';
+
 
 // Uncomment these to implement API functionalty:
 // import 'package:activity_gen/api/api_service.dart';
@@ -69,7 +70,12 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => LoginTest()));
             }, 
-            icon: const Icon(Icons.person))
+            icon: const Icon(Icons.person)),
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ActivityTypeScreen()));
+            }, 
+            icon: const Icon(Icons.face))
         ],
       ),
       body: Center(
