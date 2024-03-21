@@ -1,26 +1,26 @@
-import 'package:activity_gen/screens/participants_screen.dart';
+import 'package:activity_gen/screens/price_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ActivityTypeScreen());
+  runApp(ParticipantsNumScreen());
 }
 
-class ActivityTypeScreen extends StatelessWidget {
+class ParticipantsNumScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Activity Type',
+      title: 'Number of participants',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Activity Type'),
+          title: Text('Number of participants'),
         ),
-        body: ActivityTypeButtons(),
+        body: ParticipantsNumButtons(),
       ),
     );
   }
 }
 
-class ActivityTypeButtons extends StatelessWidget {
+class ParticipantsNumButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,50 +30,48 @@ class ActivityTypeButtons extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () {
-              // Handle relaxation button press
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PriceScreen()));
             },
-            child: Text('Relaxation'),
+            child: Text('1'),
           ),
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
               // Handle busywork button press
             },
-            child: Text('Busywork'),
+            child: Text('2'),
           ),
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PriceScreen()));
               // Handle recreational button press
             },
-            child: Text('Recreational'),
+            child: Text('3'),
           ),
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PriceScreen()));
               // Handle social button press
             },
-            child: Text('Social'),
+            child: Text('4'),
           ),
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PriceScreen()));
               // Handle education button press
             },
-            child: Text('Education'),
+            child: Text('5'),
           ),
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PriceScreen()));
               // Handle music button press
             },
-            child: Text('Music'),
+            child: Text('6'),
           ),
         ],
       ),
