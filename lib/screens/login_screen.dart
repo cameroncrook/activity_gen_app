@@ -14,6 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final db = DB();
+  final inputs = Map();
 
   void _login() async {
     String user_id = await db.authenticate(_usernameController.text, _passwordController.text);

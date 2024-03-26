@@ -11,7 +11,7 @@ import 'package:activity_gen/screens/login_screen.dart';
 import 'package:activity_gen/screens/activity_type.dart';
 
 
-// Uncomment these to implement API functionalty:
+// Uncomment these to implement API functionality:
 // import 'package:activity_gen/api/api_service.dart';
 // import 'package:activity_gen/api/models/activity.dart';
 // import 'package:activity_gen/api/endpoints.dart';
@@ -49,7 +49,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+  final inputs = Map();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: const Icon(Icons.person)),
           IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ActivityTypeScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ActivityTypeScreen(inputs: inputs)));
             }, 
             icon: const Icon(Icons.face))
         ],
