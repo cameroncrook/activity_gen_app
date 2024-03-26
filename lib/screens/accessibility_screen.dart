@@ -1,61 +1,62 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(AccessibilityScreen());
-}
+
 
 class AccessibilityScreen extends StatelessWidget {
+  const AccessibilityScreen({Key? key, required this.inputs,}) : super(key: key);
+  final Map inputs;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Accessiblity Level',
+      title: 'Accessibility Level',
       home: Scaffold(
         appBar: AppBar(
           title: Text('Accessiblity Level'),
         ),
-        body: AccessibilityButtons(),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  inputs['accessibility'] = ['0.0', "0.2"];
+                  print(inputs);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AccessibilityScreen(inputs: inputs,),),);
+                  // Handle relaxation button press
+                },
+                child: Text('Very Accessible'),
+              ),
+              SizedBox(height: 20.0),
+              ElevatedButton(
+                onPressed: () {
+                  inputs['accessibility'] = ['0.3', "0.6"];
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AccessibilityScreen(inputs: inputs,),),);
+                },
+                child: Text('Moderately Accessible'),
+              ),
+              SizedBox(height: 20.0),
+              ElevatedButton(
+                onPressed: () {
+                  inputs['accessibility'] = ['0.7', '1.0'];
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AccessibilityScreen(inputs: inputs,),),);
+                },
+                child: Text('Not Very Accessible'),
+              ),
+              SizedBox(height: 20.0),
+              ElevatedButton(
+                onPressed: () {
+                  inputs['accessibility'] = ['0.0', '1.0'];
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AccessibilityScreen(inputs: inputs,),),);
+                },
+                child: Text('No Preference'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
-class AccessibilityButtons extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              // Handle relaxation button press
-            },
-            child: Text('Very Accessible'),
-          ),
-          SizedBox(height: 20.0),
-          ElevatedButton(
-            onPressed: () {
-              // Handle busywork button press
-            },
-            child: Text('Moderately Accessible'),
-          ),
-          SizedBox(height: 20.0),
-          ElevatedButton(
-            onPressed: () {
-              // Handle recreational button press
-            },
-            child: Text('Not Very Accessible'),
-          ),
-          SizedBox(height: 20.0),
-          ElevatedButton(
-            onPressed: () {
-              // Handle social button press
-            },
-            child: Text('No Preference'),
-          ),
-        ],
-      ),
-    );
-  }
-}

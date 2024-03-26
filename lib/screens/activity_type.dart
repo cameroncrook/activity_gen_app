@@ -1,26 +1,19 @@
 import 'package:activity_gen/screens/participants_screen.dart';
 import 'package:flutter/material.dart';
+import 'participants_screen.dart';
 
-void main() {
-  runApp(ActivityTypeScreen());
-}
+class ActivityTypeScreen extends StatefulWidget {
+  const ActivityTypeScreen({Key? key, required this.inputs}) : super(key:key);
+  final Map inputs;
 
-class ActivityTypeScreen extends StatelessWidget {
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Activity Type',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Activity Type'),
-        ),
-        body: ActivityTypeButtons(),
-      ),
-    );
-  }
+  State<ActivityTypeScreen> createState() => _ActivityTypeScreenState();
 }
 
-class ActivityTypeButtons extends StatelessWidget {
+class _ActivityTypeScreenState extends State<ActivityTypeScreen> {
+  var inputs = Map();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,22 +24,24 @@ class ActivityTypeButtons extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               // Handle relaxation button press
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              inputs['type'] = ['relaxation'];
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsScreen(inputs: inputs,),),);
             },
             child: Text('Relaxation'),
           ),
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
-              // Handle busywork button press
+              inputs['type'] = ['busywork'];
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsScreen(inputs: inputs,),),);
             },
             child: Text('Busywork'),
           ),
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              inputs['type'] = ['recreational'];
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsScreen(inputs: inputs,),),);
               // Handle recreational button press
             },
             child: Text('Recreational'),
@@ -54,7 +49,8 @@ class ActivityTypeButtons extends StatelessWidget {
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              inputs['type'] = ['social'];
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsScreen(inputs: inputs,),),);
               // Handle social button press
             },
             child: Text('Social'),
@@ -62,7 +58,8 @@ class ActivityTypeButtons extends StatelessWidget {
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              inputs['type'] = ['education'];
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsScreen(inputs: inputs,),),);
               // Handle education button press
             },
             child: Text('Education'),
@@ -70,7 +67,8 @@ class ActivityTypeButtons extends StatelessWidget {
           SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsNumScreen()));
+              inputs['type'] = ['music'];
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ParticipantsScreen(inputs: inputs,),),);
               // Handle music button press
             },
             child: Text('Music'),
