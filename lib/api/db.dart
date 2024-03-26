@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:activity_gen/utils/utility.dart' as utilities;
-// import 'package:crypto/crypto.dart';
-// import 'dart:convert';
 
 class DB {
   final FirebaseFirestore firestore;
@@ -23,6 +21,7 @@ class DB {
 
         if (data != null) {
           if (utilities.hashPassword(password) == data['password']) {
+            utilities.saveData("user", id);
             return id;
           }
         }

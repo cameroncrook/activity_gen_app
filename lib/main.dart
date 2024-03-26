@@ -1,6 +1,7 @@
 // main.dart
 import 'package:activity_gen/screens/generator_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:activity_gen/utils/utility.dart' as utilities;
 
 // firestore
 import 'package:firebase_core/firebase_core.dart';
@@ -36,7 +37,19 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      home: FutureBuilder<bool>(
+        future: utilities.isLoggedIn(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            final bool isLoggedIn = snapshot.data ?? false;
+            return isLoggedIn ? MyHomePage() : LoginScreen();
+          }
+        },
+      ),
     );
   }
 }
@@ -68,14 +81,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-            }, 
-            icon: const Icon(Icons.person)),
-          IconButton(
-            onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ActivityTypeScreen(inputs: inputs)));
             }, 
-            icon: const Icon(Icons.face))
+            icon: const Icon(Icons.face)),
+          IconButton(
+            onPressed: () async {
+              await utilities.clearStorage();
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+            }, 
+            icon: Icon(Icons.exit_to_app)
+          ),
         ],
       ),
       body: Center(
