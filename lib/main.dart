@@ -1,6 +1,7 @@
 // main.dart
 import 'package:activity_gen/screens/generator_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:activity_gen/utils/utility.dart' as utilities;
 
 // firestore
 import 'package:firebase_core/firebase_core.dart';
@@ -9,6 +10,8 @@ import 'firebase_options.dart';
 // screens
 import 'package:activity_gen/screens/login_screen.dart';
 import 'package:activity_gen/screens/activity_type.dart';
+import 'package:activity_gen/screens/favorites_screen.dart';
+import 'package:activity_gen/screens/create_screen.dart';
 
 
 // Uncomment these to implement API functionality:
@@ -36,7 +39,19 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      home: FutureBuilder<bool>(
+        future: utilities.isLoggedIn(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            final bool isLoggedIn = snapshot.data ?? false;
+            return isLoggedIn ? MyHomePage() : LoginScreen();
+          }
+        },
+      ),
     );
   }
 }
@@ -61,35 +76,33 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () async {
               await Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => GeneratorScreen()),
+                MaterialPageRoute(builder: (context) => FavoritesScreen()),
               );
             },
-            icon: const Icon(Icons.flash_on)
+            icon: const Icon(Icons.favorite)
           ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-            }, 
-            icon: const Icon(Icons.person)),
           IconButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ActivityTypeScreen(inputs: inputs)));
             }, 
-            icon: const Icon(Icons.face))
+            icon: const Icon(Icons.flash_on)
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CreateScreen()));
+            }, 
+            icon: const Icon(Icons.edit)
+          ),
+          IconButton(
+            onPressed: () async {
+              await utilities.clearStorage();
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+            }, 
+            icon: Icon(Icons.exit_to_app)
+          ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              '[UNAMED] LLC',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const Text('This is the start of our project. It will be sweet!'),
-          ],
-        ),
-      ),
+      body: GeneratorScreen(),
     );
   }
 }
