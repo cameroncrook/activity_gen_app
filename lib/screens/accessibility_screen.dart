@@ -1,3 +1,4 @@
+import 'package:activity_gen/screens/user_generator_screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -23,7 +24,7 @@ class AccessibilityScreen extends StatelessWidget {
                 onPressed: () {
                   inputs['accessibility'] = ['0.0', "0.2"];
                   print(inputs);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AccessibilityScreen(inputs: inputs,),),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserGeneratorScreen(inputs: inputs,),),);
                   // Handle relaxation button press
                 },
                 child: Text('Very Accessible'),
@@ -32,7 +33,7 @@ class AccessibilityScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   inputs['accessibility'] = ['0.3', "0.6"];
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AccessibilityScreen(inputs: inputs,),),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserGeneratorScreen(inputs: inputs,),),);
                 },
                 child: Text('Moderately Accessible'),
               ),
@@ -40,7 +41,7 @@ class AccessibilityScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   inputs['accessibility'] = ['0.7', '1.0'];
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AccessibilityScreen(inputs: inputs,),),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserGeneratorScreen(inputs: inputs,),),);
                 },
                 child: Text('Not Very Accessible'),
               ),
@@ -48,7 +49,7 @@ class AccessibilityScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   inputs['accessibility'] = ['0.0', '1.0'];
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AccessibilityScreen(inputs: inputs,),),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserGeneratorScreen(inputs: inputs,),),);
                 },
                 child: Text('No Preference'),
               ),

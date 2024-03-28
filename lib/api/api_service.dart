@@ -10,6 +10,7 @@ import 'models/activity.dart';
 
 class ApiService {
   Future<Map<String, dynamic>> fetchData(String endpoint) async {
+
     // Create complete URL
     final baseUrl = Uri.parse('http://www.boredapi.com/api/');
     final url = baseUrl.resolve(endpoint);
@@ -31,6 +32,7 @@ class ApiService {
       print('Error during API request: $error');
       throw Exception('Failed to fetch data');
     }
+
   }
 }
 
@@ -49,3 +51,5 @@ Future<Activity> getActivity() async {
     throw Exception('Failed to load data');
   }
 }
+
+

@@ -15,6 +15,8 @@ class _GeneratorScreenState extends State<GeneratorScreen> {
 
   List<ActivityCard> activities = [];
 
+
+
   void addActivity() async {
     Activity activity = await getActivity();
 
